@@ -24,7 +24,7 @@ jobs:
 
     - name: Run preprocessing script
       run: |
-        python automate_Salwa-Salsabila-Meyriva.py
+        python preprocessing/automate_Salwa-Salsabila-Meyriva.py
 
     - name: Upload processed dataset
       uses: actions/upload-artifact@v3
