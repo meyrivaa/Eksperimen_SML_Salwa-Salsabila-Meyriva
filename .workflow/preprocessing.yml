@@ -1,0 +1,33 @@
+name: Run Preprocessing
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install pandas numpy scikit-learn
+
+    - name: Run preprocessing script
+      run: |
+        python automate_Salwa-Salsabila-Meyriva.py
+
+    - name: Upload processed dataset
+      uses: actions/upload-artifact@v3
+      with:
+        name: processed-data
+        path: preprocessing/dataset_preprocessing/ecommerce-customer-churn_dataset_preprocessing.csv
